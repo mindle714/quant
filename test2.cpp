@@ -46,7 +46,7 @@ void quantize(const std::vector<float>& a,
 int main() {
   auto begin = std::chrono::steady_clock::now();
 
-  std::vector<float> a = {1.2, 2.4, 3.6, 
+  std::vector<float> a = {1.2e10, 2.4, 3.6, 
                           4.8, 2.3, 3.4,
                           -4.5, 5.6, 6.7,
                           7.8, 8.9, 9.1};
@@ -79,6 +79,8 @@ int main() {
       (b_q[i] - b_zero_point) * b_scale << std::endl;
   }*/
 
+  // TODO zero point is of int64_t
+  // but a_qrs, b_qcs... are of int
   int md = 4, nd = 3, kd = 3;
 
   // cs stands for row-wise sum
